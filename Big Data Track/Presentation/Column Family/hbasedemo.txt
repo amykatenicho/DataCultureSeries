@@ -1,0 +1,53 @@
+cd %hbase_home%\bin
+hbase shell
+
+create 'kinecttelemetry', 'interaction', 'demographics'
+
+list 'kinecttelemetry'
+
+put 'kinecttelemetry', '721', 'interaction:action', 'removed'
+put 'kinecttelemetry', '721', 'interaction:duration', '50'
+put 'kinecttelemetry', '721', 'demographics:age', '45'
+put 'kinecttelemetry', '721', 'demographics:gender', 'female'
+put 'kinecttelemetry', '720', 'interaction:action', 'replaced'
+put 'kinecttelemetry', '720', 'interaction:duration', '100'
+put 'kinecttelemetry', '720', 'demographics:gender', 'male'
+put 'kinecttelemetry', '720', 'demographics:age', '15'
+
+scan 'kinecttelemetry'
+
+get 'kinecttelemetry', '720'
+get 'kinecttelemetry', '720', 'demographics:gender'
+get 'kinecttelemetry', '721'
+
+for i in 1..50
+put 'kinecttelemetry', i, 'demographics:age', i
+put 'kinecttelemetry', i, 'demographics:gender', 'male'
+put 'kinecttelemetry', i, 'interaction:action', 'replaced'
+put 'kinecttelemetry', i, 'interaction:duration', i
+end
+for i in 51..100
+put 'kinecttelemetry', i, 'demographics:age', i
+put 'kinecttelemetry', i, 'demographics:gender', 'female'
+put 'kinecttelemetry', i, 'interaction:action', 'removed'
+put 'kinecttelemetry', i, 'interaction:duration', i
+end
+
+disable 'kinecttelemetry'
+drop 'kinecttelemetry'
+
+CREATE EXTERNAL TABLE kinecttelemetry(rowkey STRING, age STRING, gender STRING, action STRING, duration STRING)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,demographics:age,demographics:gender,interaction:action,interaction:duration')
+TBLPROPERTIES ('hbase.table.name' = 'sampletable');
+
+Phoenix
+
+cd %PHOENIX_HOME%\bin
+
+sqlline.py zookeeper0,zookeeper1,zookeeper2
+
+CREATE VIEW IF NOT EXISTS "kinecttelemetry"("k" VARCHAR primary key, "age" VARCHAR, "gender" VARCHAR, "action" VARCHAR, "duration" VARCHAR);
+
+SELECT * FROM "kinecttelemetry"
+

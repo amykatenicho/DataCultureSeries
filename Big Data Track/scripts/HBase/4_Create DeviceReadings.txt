@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS DeviceReadings;
+
+CREATE EXTERNAL TABLE DeviceReadings (
+    type string, sensorDateTime string, deviceId string, roomNumber int, reading float
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\054'
+    STORED AS TEXTFILE
+    LOCATION 'wasb://data@<your account name>.blob.core.windows.net/input';

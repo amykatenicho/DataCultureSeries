@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS AverageReadingByMinute;
+
+CREATE TABLE AverageReadingByMinute (key string, type string, sensorDateTime string, roomNumber int, reading float);
+
+INSERT INTO TABLE AverageReadingByMinute SELECT concat(type, "_", deviceId, "_", roomNumber, "_", substr(sensorDateTime, 1, 16), ":00.0000000Z") as key, type, concat(substr(sensorDateTime, 1, 16), ":00.0000000Z") as dateTime, roomNumber, avg(reading) 
+   FROM DeviceReadings 
+   WHERE roomNumber IS NOT NULL 
+   GROUP BY concat(type, "_", deviceId, "_", roomNumber, "_", substr(sensorDateTime, 1, 16), ":00.0000000Z"), type, concat(substr(sensorDateTime, 1, 16), ":00.0000000Z"), roomNumber;

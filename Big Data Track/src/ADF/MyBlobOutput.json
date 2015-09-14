@@ -1,0 +1,17 @@
+{
+    "name": "MyBlobOutput",
+    "properties":
+    {
+        "location": 
+        {
+            "type": "AzureBlobLocation",
+            "folderPath": "mystoragecontainer/output/myaverageByMinute",
+            "linkedServiceName": "MyBlobStore"
+        },
+        "availability": 
+        {
+            "frequency": "Minute",
+            "interval": 15
+        }
+    }
+}

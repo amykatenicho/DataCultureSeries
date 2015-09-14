@@ -1,0 +1,30 @@
+{
+    "name": "MyHiveSourceData",
+    "properties":
+    {
+        "structure": [
+            { "name": "DeviceType", "type": "String"},
+            { "name": "DateOfReading", "type": "String"},
+            { "name": "RoomNumber", "type": "String"},
+            { "name": "Reading", "type": "Decimal"}
+        ],
+        "location":
+        {
+            "type": "AzureBlobLocation",
+            "folderPath": "mystoragecontainer/output/myaverageByMinute",
+            "fileName": "000000_0",
+            "linkedServiceName": "MyBlobStore",
+            "format":
+            {
+                "type": "TextFormat",
+                "columnDelimiter": "\t"
+            }
+        },
+        "availability":
+        {
+            "frequency": "Minute",
+            "interval": 15,
+            "waitonexternal": {}
+        }
+    }
+}   

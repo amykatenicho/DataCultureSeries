@@ -1,0 +1,24 @@
+{
+    "name": "MySQLStore",
+    "properties":
+    {
+        "structure":
+        [
+            { "name": "DeviceType", "type": "String"},
+            { "name": "DateOfReading", "type": "String"},
+            { "name": "RoomNumber", "type": "String"},
+            { "name": "Reading", "type": "Decimal"}
+        ],
+        "location":
+        {
+            "type": "AzureSQLTableLocation",
+            "tableName": "readingsByMinute",
+            "linkedServiceName": "MySQLStore"
+        },
+        "availability": 
+        {
+            "frequency": "Minute",
+            "interval": 15            
+        }
+    }
+}

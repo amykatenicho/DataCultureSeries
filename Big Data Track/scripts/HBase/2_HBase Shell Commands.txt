@@ -1,0 +1,25 @@
+cd %hbase_home%\bin
+hbase shell
+
+create 'kinecttelemetry', 'interaction', 'demographics'
+
+list 'kinecttelemetry'
+
+put 'kinecttelemetry', '721', 'interaction:action', 'removed'
+put 'kinecttelemetry', '721', 'interaction:duration', '50'
+put 'kinecttelemetry', '721', 'demographics:age', '45'
+put 'kinecttelemetry', '721', 'demographics:gender', 'female'
+put 'kinecttelemetry', '720', 'interaction:action', 'replaced'
+put 'kinecttelemetry', '720', 'interaction:duration', '100'
+put 'kinecttelemetry', '720', 'demographics:gender', 'male'
+put 'kinecttelemetry', '720', 'demographics:age', '15'
+
+scan 'kinecttelemetry'
+
+get 'kinecttelemetry', '720'
+get 'kinecttelemetry', '720', 'demographics:gender'
+get 'kinecttelemetry', '721'
+
+disable 'kinecttelemetry'
+drop 'kinecttelemetry'
+

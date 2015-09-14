@@ -1,0 +1,18 @@
+{
+    "name": "MyBlobInput",
+    "properties":
+    {
+        "location": 
+        {
+            "type": "AzureBlobLocation",
+            "folderPath": "mystoragecontainer/input",
+            "linkedServiceName": "MyBlobStore"
+        },
+        "availability": 
+        {
+            "frequency": "minute",
+            "interval": 15,
+            "waitonexternal": {}
+        }
+    }
+}

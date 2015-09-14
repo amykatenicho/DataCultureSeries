@@ -1,0 +1,57 @@
+{
+    "name": "ADFHivePipeline",
+    "properties":
+    {
+        "description" : "It runs a HiveQL query and stores the result set in a blob",
+        "activities":
+        [
+            {
+                "name": "RunHiveQuery",
+                "description": "Runs a hive query",
+                "type": "HDInsightActivity",
+                "inputs": [{"name": "MyBlobInput"}],
+                "outputs": [ {"name": "MyBlobOutput"} ],
+                "linkedServiceName": "MyHDInsightCluster",
+                "transformation":
+                {
+                    "type": "Hive",
+                    "scriptpath": "mystoragecontainer/scripts/queries.hql",
+                    "scriptLinkedService": "MyBlobStore"
+                },
+                "policy":
+                {
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 1,
+                    "timeout": "01:00:00"
+                }
+            },
+            {
+                "name": "CopyFromBlobToSQL",
+                "description": "Push data from Hive query to SQL database",
+                "type": "CopyActivity",
+                "inputs": [ {"name": "MyHiveSourceData"} ],
+                "outputs": [ {"name": "MySQLStore"} ],     
+                "transformation":
+                {
+                    "source":
+                    {                               
+                        "type": "BlobSource"
+                    },
+                    "sink":
+                    {
+                        "type": "SqlSink"
+                    }   
+                },
+                "Policy":
+                {
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 0,
+                    "timeout": "01:00:00"
+                }       
+            }
+        ]
+    }
+}

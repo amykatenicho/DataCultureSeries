@@ -1,0 +1,11 @@
+{
+    "Name": "MyHDInsightCluster",
+    "Properties": 
+    {
+        "Type": "HDInsightBYOCLinkedService",
+        "ClusterUri": "https://mynewcluster.azurehdinsight.net/",
+        "UserName": "myusername",
+        "Password": "M!crosoft123",
+        "LinkedServiceName": "MyBlobStore"
+    }
+}

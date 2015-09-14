@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS MinimumReading;
+
+CREATE EXTERNAL TABLE MinimumReading (type string, sensorDateTime string, roomNumber int, maxReading float)
+    row format delimited 
+    fields terminated by '\t' 
+    lines terminated by '\n' 
+    stored as textfile location 'wasb://data@<your account name>.blob.core.windows.net/output/minimumReading';
+
+INSERT INTO TABLE MinimumReading 
+SELECT mr.type, min(mr.sensorDateTime), min(mr.roomNumber), mr.reading FROM (
+    SELECT a.type, a.sensorDateTime, a.roomNumber, a.reading from DeviceReadings a
+    JOIN (SELECT type, min(reading) reading FROM DeviceReadings GROUP BY type ) b
+    ON (a.type = b.type and a.reading = b.reading) 
+) mr 
+GROUP BY mr.type,  mr.reading;

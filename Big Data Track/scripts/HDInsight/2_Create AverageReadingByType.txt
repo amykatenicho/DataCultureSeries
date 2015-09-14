@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS AverageReadingByType;
+
+CREATE EXTERNAL TABLE AverageReadingByType (type string, reading float)
+    row format delimited 
+    fields terminated by '\t' 
+    lines terminated by '\n' 
+    stored as textfile location 'wasb://data@<your account name>.blob.core.windows.net/output/averageReadingByType';
+
+
+INSERT INTO TABLE AverageReadingByType SELECT TYPE, avg(reading) 
+    FROM DeviceReadings  
+    GROUP BY TYPE;

@@ -1,0 +1,1 @@
+DeviceSender GenerateDataToEventHub -n <eventHubNamespace> -e <eventHubName> -p <policyName> -k <policyKey>

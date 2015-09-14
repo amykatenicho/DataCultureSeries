@@ -1,0 +1,7 @@
+cd %PHOENIX_HOME%\bin
+
+sqlline.py zookeeper0,zookeeper1,zookeeper2
+
+CREATE VIEW "readings"("k" VARCHAR primary key, "sum"."sum" VARCHAR, "count"."count" VARCHAR, "average"."average" VARCHAR);
+
+SELECT * FROM "readings" WHERE "k" = 'Humidity,2015-02-23T03:22:00.0000000Z,4';

@@ -1,0 +1,1 @@
+azcopy /Source:"C:\CloudDataCamp\data\" /Dest:https://[storage account name].blob.core.windows.net/data/input /DestKey:[storage account key] /S

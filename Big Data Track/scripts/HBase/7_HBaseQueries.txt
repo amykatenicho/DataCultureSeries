@@ -1,0 +1,3 @@
+SELECT * FROM HBaseDeviceReadings;
+SELECT * FROM HBaseDeviceReadings where key='energy_energy20_0_2015-01-21T16:46:00.0000000Z'
+SELECT * FROM HBaseDeviceReadings where roomNumber = 0;
