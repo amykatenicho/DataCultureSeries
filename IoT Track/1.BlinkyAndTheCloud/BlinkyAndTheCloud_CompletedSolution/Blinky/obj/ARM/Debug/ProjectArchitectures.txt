@@ -1,0 +1,1 @@
+C:\Users\amynic\Documents\Data Science\IoT\samples-develop\Blinky\CS\Blinky.csproj;arm
