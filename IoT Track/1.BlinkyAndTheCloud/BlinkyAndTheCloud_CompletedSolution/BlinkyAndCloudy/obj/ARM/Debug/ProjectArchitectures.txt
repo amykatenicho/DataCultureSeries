@@ -1,1 +1,1 @@
-C:\Users\amynic\Documents\Data Science\IoT\Blinky and the cloud\BlinkyAndCloudy\Blinky.csproj;arm
+C:\Users\amynic\Documents\GitHub\DataCultureSeries\IoT Track\1.BlinkyAndTheCloud\BlinkyAndTheCloud_CompletedSolution\BlinkyAndCloudy\Blinky.csproj;arm
