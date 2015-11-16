@@ -54,3 +54,6 @@ C:\Users\ihowe\Documents\GitHub\azure-stream-analytics\DataGenerators\TwitterCli
 C:\Users\ihowe\Documents\GitHub\azure-stream-analytics\DataGenerators\TwitterClient\TwitterClient\obj\Debug\TwitterClient.csprojResolveAssemblyReference.cache
 C:\Users\ihowe\Documents\GitHub\azure-stream-analytics\DataGenerators\TwitterClient\TwitterClient\obj\Debug\TwitterClient.exe
 C:\Users\ihowe\Documents\GitHub\azure-stream-analytics\DataGenerators\TwitterClient\TwitterClient\obj\Debug\TwitterClient.pdb
+C:\Users\ihowe\Documents\GitHub\DataCultureSeries\TwitterClient\TwitterClient\bin\Debug\TwitterClient.exe.config
+C:\Users\ihowe\Documents\GitHub\DataCultureSeries\TwitterClient\TwitterClient\obj\Debug\TwitterClient.exe
+C:\Users\ihowe\Documents\GitHub\DataCultureSeries\TwitterClient\TwitterClient\obj\Debug\TwitterClient.pdb
